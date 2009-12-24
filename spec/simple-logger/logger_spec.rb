@@ -2,12 +2,12 @@
 
 require "spec"
 require "tempfile"
-require_relative "../lib/colorful-logger"
+require_relative "../lib/simple-logger"
 
-describe Extlib::ColorfulLogger do
+describe SimpleLogger::Logger do
   before(:each) do
     @stream = Tempfile.new("test.log")
-    @logger = Extlib::Logger.new(@stream)
+    @logger = SimpleLogger::Logger.new(@stream)
   end
 
   it "should have some specs"
