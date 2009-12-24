@@ -4,7 +4,7 @@
 # NOTE: we can't use require_relative because when we run gem build, it use eval for executing this file
 Gem::Specification.new do |s|
   s.name = "simple-logger"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.authors = ["Jakub Šťastný aka Botanicus"]
   s.homepage = "http://github.com/botanicus/simple-logger"
   s.summary = "Smarter clone of Extlib logger"
