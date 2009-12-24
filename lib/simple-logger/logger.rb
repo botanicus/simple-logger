@@ -1,32 +1,27 @@
 # encoding: utf-8
 
+begin
+  require "term/ansicolor"
+rescue LoadError
+  raise LoadError, "You have to install term-ansicolor gem!"
+end
+
 require_relative "plain"
 
 module SimpleLogger
   class Logger < Plain
     @@colors = {
-      fatal:  :red,
-      error:  :red,
-      warn:   :yellow,
-      info:   :white,
-      debug:  :cyan,
-      custom: :magenta
+      fatal:  "red.bold",
+      error:  "red",
+      warn:   "yellow",
+      info:   "green",
+      debug:  "cyan",
+      custom: "magenta"
     }
 
-    @@color_values = {
-      black:   30,
-      red:     31,
-      green:   32,
-      yellow:  33,
-      blue:    34,
-      magenta: 35,
-      cyan:    36,
-      white:   37
-    }
-    
     # Generate the logging methods for SimpleLogger.logger for each log level.
     self::Levels.each_pair do |name, number|
-      color = @@color_values[@@colors[name]]
+      color = @@colors[name]
       class_eval <<-RUBY, __FILE__, __LINE__
 
       # Appends a message to the log if the log level is at least as high as
@@ -38,7 +33,7 @@ module SimpleLogger
       # ==== Returns
       # self:: The logger object for chaining.
       def #{name}(message = nil)
-        self << "\033[0;\#{#{color}}m%s\033[0m" % message
+        self << message.extend(Term::ANSIColor).#{color}
         self
       end
 
@@ -52,7 +47,7 @@ module SimpleLogger
       # ==== Returns
       # self:: The logger object for chaining.
       def #{name}!(message = nil)
-        self << "\033[0;\#{#{color}}m%s\033[0m" % message
+        self << message.extend(Term::ANSIColor).#{color}
         flush if #{number} >= level
         self
       end
