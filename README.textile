@@ -1,0 +1,7 @@
+h1. About
+
+h1. Usage
+
+<pre>
+SimpleLogger::Logger.colors[:debug] = "cyan.bold"
+</pre>

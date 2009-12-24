@@ -10,14 +10,16 @@ require_relative "plain"
 
 module SimpleLogger
   class Logger < Plain
-    @@colors = {
-      fatal:  "red.bold",
-      error:  "red",
-      warn:   "yellow",
-      info:   "green",
-      debug:  "cyan",
-      custom: "magenta"
-    }
+    def self.colors
+      @@colors ||= {
+        fatal:  "red.bold",
+        error:  "red",
+        warn:   "yellow",
+        info:   "green",
+        debug:  "cyan",
+        custom: "magenta"
+      }
+    end
 
     # Generate the logging methods for SimpleLogger.logger for each log level.
     self::Levels.each_pair do |name, number|
