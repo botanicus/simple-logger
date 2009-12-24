@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
 
   # files
-  s.files = Dir.glob("{lib,spec}/**/*") + %w[LICENSE Rakefile README.trueile]
+  s.files = Dir.glob("{lib,spec}/**/*") + %w[LICENSE Rakefile README.textile simple-logger.gemspec]
   s.require_paths = ["lib"]
 
   # Ruby version
