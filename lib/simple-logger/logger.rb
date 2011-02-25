@@ -23,7 +23,7 @@ module SimpleLogger
 
     # Generate the logging methods for SimpleLogger.logger for each log level.
     self::Levels.each_pair do |name, number|
-      color = @@colors[name]
+      color = self.colors[name]
       class_eval <<-RUBY, __FILE__, __LINE__
 
       # Appends a message to the log if the log level is at least as high as
