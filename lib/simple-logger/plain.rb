@@ -110,12 +110,13 @@ module SimpleLogger
     # auto_flush<Boolean>::
     #   Whether the log should automatically flush after new messages are
     #   added. Defaults to false.
-    def set_log(log, log_level = nil, delimiter = " ~ ", auto_flush = false)
+    def set_log(log, log_level: nil, delimiter: " ~ ", auto_flush: false)
       if log_level && Levels[log_level.to_sym]
         @level = Levels[log_level.to_sym]
       else
         @level = Levels[:debug]
       end
+
       @buffer     = []
       @delimiter  = delimiter
       @auto_flush = auto_flush
