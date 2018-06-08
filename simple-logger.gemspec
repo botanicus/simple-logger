@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
 
   # files
-  s.files = Dir.glob('lib/**/*.rb') = ['README.md']
+  s.files = Dir.glob('lib/**/*.rb') + ['README.md']
 
   s.require_paths = ["lib"]
 
